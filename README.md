@@ -18,7 +18,7 @@ To get started with **Wishload**, simply clone this repository or download the l
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/wishload.git
+git clone https://github.com/findthehead/Wishload.git
 cd wishload
 ```
 
