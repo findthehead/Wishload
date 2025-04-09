@@ -129,14 +129,38 @@ We welcome contributions from the community! To contribute, please fork the repo
 4. Push to your forked repository: `git push origin feature-name`
 5. Open a pull request with a detailed description of your changes
 
+
+
+### Docker Setup
+
+To run the **Wishload** project inside a Docker container, follow these steps:
+
+1. **Build the Docker Image**
+
+   In your project directory (where the `Dockerfile` is located), build the Docker image using the following command:
+
+   ```bash
+   docker build -t wishload .
+   ```
+
+   This will create a Docker image named `wishload`.
+
+2. **Run the Docker Container**
+
+   After building the image, run the container with the following command:
+
+   ```bash
+   docker run --rm wishload -p "hello <world" --padding "#" --padding-length 20 --center
+   ```
+
+
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU License - see the [LICENSE](LICENSE) file for details.
 
----
+
 
 ### **Wishload**: Make polyglot payloads with ease!
 
 ---
-
-This README provides a clean, attractive, and comprehensive guide to using **Wishload**. It covers installation, usage, and examples, and includes the steps to contribute. Let me know if you'd like any further adjustments!
