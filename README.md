@@ -162,11 +162,3 @@ This project is licensed under the GNU License - see the [LICENSE](LICENSE) file
 
 
 ### **Wishload**: Make polyglot payloads with ease!
-
-<<<<<<< HEAD
----
-=======
----
-
-This README provides a clean, attractive, and comprehensive guide to using **Wishload**. It covers installation, usage, and examples, and includes the steps to contribute. Let me know if you'd like any further adjustments!
->>>>>>> 2808a178ce40d047f88b5a8707eeba3acbfa59fb
