@@ -1,4 +1,5 @@
 from utils.encoder import Encoder
+import string
 
 types = [
     "utf-8", "utf-16", "utf-16le", "utf-16be", "iso-8859-1", "windows-1252",
@@ -13,7 +14,11 @@ types = [
     "windows-1256", "windows-1257", "windows-1258"
 ]
 
-symbol_list = [ '(', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '{', '}', '[', ']', ':', ';', '"', "'", '<', '>', '?', ',', '.', '/', '|', '\\', '`', '~' ]
+symbol_list = ['(', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '{', '}', '[', ']', ':', ';', '"', "'", '<', '>', '?', ',', '.', '/', '|', '\\', '`', '~']
+
+# Extend with all lowercase and uppercase letters
+symbol_list += list(string.ascii_lowercase)
+symbol_list += list(string.ascii_uppercase)
 
 class Make():
     def __init__(self):
