@@ -2,6 +2,8 @@
 
 **Wishload** is a powerful tool that allows you to craft and manipulate polyglot payloads. With a variety of encoding and escape options, this tool is designed to help security researchers, penetration testers, and developers create complex payloads for web applications and beyond. Whether you're looking to encode your payload in multiple formats, apply padding, or convert characters to escape sequences, **Wishload** makes it simple and efficient.
 
+![alt text](image.png)
+
 ## Features
 
 - **Customizable Padding**: Add padding characters to the left, right, or center of your payload.
