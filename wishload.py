@@ -5,25 +5,27 @@ from utils.make import Make
 
 init(autoreset=True)
 
-print(Fore.RED + """
-            _________ _______           _        _______  _______  ______  
-    |\\     /|\\__   __/(  ____ \\|\\     /|( \\      (  ___  )(  ___  )(  __  \\ 
-    | )   ( |   ) (   | (    \\/| )   ( || (      | (   ) || (   ) || (  \\  )
-    | | _ | |   | |   | (_____ | (___) || |      | |   | || (___) || |   ) |
-    | |( )| |   | |   (_____  )|  ___  || |      | |   | ||  ___  || |   | |
-    | || || |   | |         ) || (   ) || |      | |   | || (   ) || |   ) |
-    | () () |___) (___/\\____) || )   ( || (____/\\| (___) || )   ( || (__/  )
-    (_______)\\_______/\\_______)|/     \\|(_______/(_______)|/     \\|(______/ 
-                By: fth
-        """)
+banner = Fore.RED + """
+                    _________ _______           _        _______  _______  ______  
+            |\\     /|\\__   __/(  ____ \\|\\     /|( \\      (  ___  )(  ___  )(  __  \\ 
+            | )   ( |   ) (   | (    \\/| )   ( || (      | (   ) || (   ) || (  \\  )
+            | | _ | |   | |   | (_____ | (___) || |      | |   | || (___) || |   ) |
+            | |( )| |   | |   (_____  )|  ___  || |      | |   | ||  ___  || |   | |
+            | || || |   | |         ) || (   ) || |      | |   | || (   ) || |   ) |
+            | () () |___) (___/\\____) || )   ( || (____/\\| (___) || )   ( || (__/  )
+            (_______)\\_______/\\_______)|/     \\|(_______/(_______)|/     \\|(______/ 
+                        By: fth
+                """
 
 class Wishload:
     def __init__(self):
         pass
 
+
 if __name__ == '__main__':
-    # Parse arguments
-    parser = argparse.ArgumentParser(description=Fore.GREEN+'Make polyglot payloads as per your Wish')
+    
+    
+    parser = argparse.ArgumentParser(description='Make polyglot payloads as per your Wish')
     parser.add_argument('-strong', '--strong', type=int, default=1, help='Strength of the payload')
     parser.add_argument('-p', '--payload', type=str, help='Payload to be encoded')
     parser.add_argument('-s', '--symbol', type=str, help='Symbol to be used')
@@ -38,7 +40,6 @@ if __name__ == '__main__':
     parser.add_argument('--js_escape', action='store_true', help='Convert payload to JavaScript escape sequences')
 
     args = parser.parse_args()
-
     strong = args.strong
     payload = args.payload
     padding = args.padding
@@ -66,10 +67,12 @@ if __name__ == '__main__':
 
     # If no payload is provided
     if payload is None:
+        
         print(Fore.RED + "Error: No payload provided. Please provide a payload either via -p, pipe it, or provide a file.")
         sys.exit(1)
 
     mk = Make()
+
 
     # Process transformations (padding, encoding, escapes, etc.)
     final_payload = payload
@@ -109,9 +112,10 @@ if __name__ == '__main__':
     elif encoding:
         final_payload = mk.encoding(encoding, final_payload)
 
-    # Default encoding and normal operations
     else:
+
         final_payload = mk.normaling(encoding, symbol, final_payload)
 
-    # Output the final processed payload
+
+
     print(Fore.YELLOW + f"{str(final_payload)}")
