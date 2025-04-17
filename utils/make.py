@@ -1,6 +1,7 @@
 from utils.encoder import Encoder
 import string
 import inspect
+import random
 
 types = [
     "utf-8", "utf-16", "utf-16le", "utf-16be", "iso-8859-1", "windows-1252",
@@ -118,3 +119,15 @@ class Make():
             js_payload = ''.join([f'\\x{ord(c):02x}' for c in payload])
             return js_payload
         return payload
+    
+    def cameling(self,payload):
+        try:
+            result = ""
+            for char in payload:
+                if char in string.ascii_letters:
+                    result += random.choice([char.lower(), char.upper()])
+                else:
+                    result += char
+            return result
+        except Exception:
+            return None

@@ -28,6 +28,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Make polyglot payloads as per your Wish')
     parser.add_argument('-st', '--strong', type=int, default=1, help='Strength of the payload')
     parser.add_argument('-p', '--payload', type=str, help='Payload to be encoded')
+    parser.add_argument('-c', '--camel', type=str, help='Payload to be camelcased')
     parser.add_argument('-s', '--symbol', type=str, help='Symbol to be used')
     parser.add_argument('-pad', '--padding', type=str, help='Padding character to be used')
     parser.add_argument('--padding-length', type=int, help='Total length of the padded payload')  # Padding length
@@ -50,6 +51,7 @@ if __name__ == '__main__':
     left = args.left
     right = args.right
     center = args.center
+    camel = args.camel
 
     # If payload is not provided and file is given, read the file's contents
     if payload is None and file_path:
@@ -109,11 +111,12 @@ if __name__ == '__main__':
         final_payload = mk.symboling(encoding, symbol, final_payload)
         
     # Encoding if encoding is specified
+    elif camel:
+        final_payload = mk.cameling(payload)
     elif encoding:
         final_payload = mk.encoding(encoding, final_payload)
 
     else:
-
         final_payload = mk.normaling(encoding, symbol, final_payload)
 
 

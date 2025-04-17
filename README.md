@@ -39,9 +39,9 @@ pip install -r requirements.txt
 **Wishload** provides a wide range of command-line options to tailor your payload creation.
 
 ```bash
-usage: wishload.py [-h] [-strong STRONG] [-p PAYLOAD] [-s SYMBOL] [-pad PADDING]
-                   [--padding-length PADDING_LENGTH] [--left] [--right]
-                   [--center] [-e ENCODING] [-f FILE] [--unicode] [--js_escape]
+usage: wishload.py [-h] [-st STRONG] [-p PAYLOAD] [-c CAMEL] [-s SYMBOL] [-pad PADDING]
+                   [--padding-length PADDING_LENGTH] [--left] [--right] [--center] [-e ENCODING] [-f FILE]
+                   [--unicode] [--js_escape]
 
 Make polyglot payloads as per your Wish
 ```
@@ -49,6 +49,8 @@ Make polyglot payloads as per your Wish
 #### Arguments:
 
 - `-p`, `--payload`: **Payload to be encoded** (e.g., `"<script>alert('Hello!');</script>"`).
+- '-c', '--camel', type=str, help='Payload to be camelcased' : **Camel Casing functionality** (e.g., `<sCrIpt>aLErT(1)</ScrIpt>`)
+- '-st', '--strong', type=int, default=1, help='Strength of the payload': **Make Double or triple encoded with -st 1 or -st 2 or st 3**
 - `-s`, `--symbol`: **Symbols to be encoded** (e.g., `"<>;"`).
 - `-pad`, `--padding`: **Padding character** (e.g., `"#"`).
 - `--padding-length`: **Total length** of the padded payload (e.g., `20`).
@@ -71,6 +73,15 @@ python wishload.py -p "hello <world" --padding "#" --padding-length 20 --center
 
 This will:
 - Add padding characters (`#`) to the center of the payload `"hello <world"` so that the total length becomes `20`.
+
+#### Basic Usage: Camel Casing
+
+```bash
+python3 wishload.py -p "<script>alert(1)</script>"  -c .
+cat payload.txt | python3 wishload.py -c .
+```
+This will:
+- Create a camel case for payload provided in the argument (e.g., `<sCrIpt>aLErT(1)</ScrIpt>`).
 
 #### Unicode Escape Sequences
 
