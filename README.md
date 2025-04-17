@@ -39,7 +39,7 @@ pip install -r requirements.txt
 **Wishload** provides a wide range of command-line options to tailor your payload creation.
 
 ```bash
-usage: wishload.py [-h] [-strong STRONG] [-p PAYLOAD] [-s SYMBOL] [-pad PADDING]
+usage: wishload.py [-h] [-st STRONG] [-p PAYLOAD] [-s SYMBOL] [-pad PADDING]
                    [--padding-length PADDING_LENGTH] [--left] [--right]
                    [--center] [-e ENCODING] [-f FILE] [--unicode] [--js_escape]
 
