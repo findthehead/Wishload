@@ -26,7 +26,7 @@ if __name__ == '__main__':
     
     
     parser = argparse.ArgumentParser(description='Make polyglot payloads as per your Wish')
-    parser.add_argument('-strong', '--strong', type=int, default=1, help='Strength of the payload')
+    parser.add_argument('-st', '--strong', type=int, default=1, help='Strength of the payload')
     parser.add_argument('-p', '--payload', type=str, help='Payload to be encoded')
     parser.add_argument('-s', '--symbol', type=str, help='Symbol to be used')
     parser.add_argument('-pad', '--padding', type=str, help='Padding character to be used')
@@ -71,7 +71,7 @@ if __name__ == '__main__':
         print(Fore.RED + "Error: No payload provided. Please provide a payload either via -p, pipe it, or provide a file.")
         sys.exit(1)
 
-    mk = Make()
+    mk = Make(strong)
 
 
     # Process transformations (padding, encoding, escapes, etc.)

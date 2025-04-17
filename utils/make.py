@@ -1,5 +1,6 @@
 from utils.encoder import Encoder
 import string
+import inspect
 
 types = [
     "utf-8", "utf-16", "utf-16le", "utf-16be", "iso-8859-1", "windows-1252",
@@ -20,32 +21,53 @@ symbol_list = ['(', '!', '@', '#', '$', '%', '^', '&', '*', '-', '+', '=', '{', 
 symbol_list += list(string.ascii_lowercase)
 symbol_list += list(string.ascii_uppercase)
 
-class Make():
-    def __init__(self):
-        self.strong = 1
 
+
+def strong(function):
+    def wrapper(*args, **kwargs):
+        obj = args[0]
+        sig = inspect.signature(function)
+        bound_args = sig.bind(*args, **kwargs)
+        bound_args.apply_defaults()
+        result = function(*bound_args.args, **bound_args.kwargs)
+        for _ in range(obj.strong - 1):
+            bound_args.arguments['payload'] = result
+            result = function(*bound_args.args, **bound_args.kwargs)
+        return result
+    return wrapper
+
+
+
+
+class Make():
+    def __init__(self,strong):
+        self.strong = strong
+
+
+
+
+
+    @strong
     def symboling(self, encoding, symbol, payload):
         """ Encode the symbols in the payload using the specified encoding """
         if encoding is None:
             encoding = "utf-8"  # Default encoding if none is provided
-
-        if self.strong == 1:
-            if symbol:
-                if isinstance(symbol, str):  # Handle string of symbols
-                    for s in symbol:
-                        if s in symbol_list:
-                            payload = payload.replace(s, Encoder.encode(s, encoding))
-                elif isinstance(symbol, list):  # Handle list of symbols
-                    for s in symbol:
-                        if s in symbol_list:
-                            payload = payload.replace(s, Encoder.encode(s, encoding))
-                else:
-                    raise Exception(f"Unsupported symbol type: {type(symbol)}")
-                return payload
+        if symbol:
+            if isinstance(symbol, str):  # Handle string of symbols
+                for s in symbol:
+                    if s in symbol_list:
+                        payload = payload.replace(s, Encoder.encode(s, encoding))
+            elif isinstance(symbol, list):  # Handle list of symbols
+                for s in symbol:
+                    if s in symbol_list:
+                        payload = payload.replace(s, Encoder.encode(s, encoding))
             else:
-                raise Exception(f"Unsupported symbol: {symbol}")
-        return None
-
+                raise Exception(f"Unsupported symbol type: {type(symbol)}")
+            return payload
+        else:
+            raise Exception(f"Unsupported symbol: {symbol}")
+            return None
+    @strong
     def encoding(self, encoding, payload):
         """ Apply encoding to the payload """
         if encoding and encoding in types:
@@ -53,7 +75,7 @@ class Make():
         else:
             raise Exception(f"Unsupported encoding: {encoding}")
         return None
-
+    @strong
     def normaling(self, encoding, symbol, payload):
         """ Normalize payload by replacing symbols with UTF-8 encoding """
         if payload:
@@ -77,7 +99,7 @@ class Make():
                 raise ValueError("Padding direction must be specified (left, right, or center).")
         else:
             raise TypeError("Payload must be a string.")  # Ensure the payload is a string
-
+    @strong
     def unicode_escape(self, payload, symbol=None):
         if symbol:
             for s in symbol:
@@ -86,7 +108,7 @@ class Make():
             unicode_payload = ''.join([f'\\u{ord(c):04x}' for c in payload])
             return unicode_payload
         return payload
-
+    @strong
     def js_escape(self, payload, symbol=None):
 
         if symbol:
