@@ -59,7 +59,7 @@ Make polyglot payloads as per your Wish
 - `-f`, `--file`: **Path to a file** to read the payload from.
 - `--unicode`: Convert the payload to **Unicode escape sequences** (e.g., `\uXXXX`).
 - `--js_escape`: Convert the payload to **JavaScript escape sequences** (e.g., `\xXX`).
-- `-strong`, `--strong`: **Strength of the payload** (default is `1`).
+- `-st`, `--strong`: **Strength of the payload** (default is `1`).
 
 ### Examples
 
