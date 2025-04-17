@@ -39,9 +39,9 @@ pip install -r requirements.txt
 **Wishload** provides a wide range of command-line options to tailor your payload creation.
 
 ```bash
-usage: wishload.py [-h] [-st STRONG] [-p PAYLOAD] [-c CAMEL] [-s SYMBOL] [-pad PADDING]
-                   [--padding-length PADDING_LENGTH] [--left] [--right] [--center] [-e ENCODING] [-f FILE]
-                   [--unicode] [--js_escape]
+usage: wishload.py [-h] [-strong STRONG] [-p PAYLOAD] [-s SYMBOL] [-pad PADDING]
+                   [--padding-length PADDING_LENGTH] [--left] [--right]
+                   [--center] [-e ENCODING] [-f FILE] [--unicode] [--js_escape]
 
 Make polyglot payloads as per your Wish
 ```
@@ -61,7 +61,7 @@ Make polyglot payloads as per your Wish
 - `-f`, `--file`: **Path to a file** to read the payload from.
 - `--unicode`: Convert the payload to **Unicode escape sequences** (e.g., `\uXXXX`).
 - `--js_escape`: Convert the payload to **JavaScript escape sequences** (e.g., `\xXX`).
-- `-strong`, `--strong`: **Strength of the payload** (default is `1`).
+- `-st`, `--strong`: **Strength of the payload** (default is `1`).
 
 ### Examples
 
