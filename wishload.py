@@ -2,6 +2,7 @@ import argparse
 import sys
 from colorama import init, Fore
 from utils.make import Make
+from utils.fire import Fire
 
 init(autoreset=True)
 
@@ -39,6 +40,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--file', type=str, help='File to read the payload from')  # For file input
     parser.add_argument('--unicode', action='store_true', help='Convert payload to Unicode escape sequences')
     parser.add_argument('--js_escape', action='store_true', help='Convert payload to JavaScript escape sequences')
+    parser.add_argument('--fire', action='store_true', help='Fire mode will enable all the possible encodings')
 
     args = parser.parse_args()
     strong = args.strong
@@ -52,7 +54,7 @@ if __name__ == '__main__':
     right = args.right
     center = args.center
     camel = args.camel
-
+    fire = args.fire
     # If payload is not provided and file is given, read the file's contents
     if payload is None and file_path:
         try:
@@ -115,7 +117,9 @@ if __name__ == '__main__':
         final_payload = mk.cameling(payload)
     elif encoding:
         final_payload = mk.encoding(encoding, final_payload)
-
+    elif fire:
+        f= Fire(final_payload)
+        final_payload = f.fire()
     else:
         final_payload = mk.normaling(encoding, symbol, final_payload)
 
