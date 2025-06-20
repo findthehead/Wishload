@@ -40,7 +40,7 @@ if __name__ == '__main__':
     parser.add_argument('-f', '--file', type=str, help='File to read the payload from')  # For file input
     parser.add_argument('--unicode', action='store_true', help='Convert payload to Unicode escape sequences')
     parser.add_argument('--js_escape', action='store_true', help='Convert payload to JavaScript escape sequences')
-    parser.add_argument('--fire', action='store_true', help='Fire mode will enable all the possible encodings')
+    parser.add_argument('--fire', action='store_true', help='Fire mode will be enabled with all the possible encodings')
 
     args = parser.parse_args()
     strong = args.strong

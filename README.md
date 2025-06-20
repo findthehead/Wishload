@@ -41,7 +41,7 @@ pip install -r requirements.txt
 ```bash
 usage: wishload.py [-h] [-strong STRONG] [-p PAYLOAD] [-s SYMBOL] [-pad PADDING]
                    [--padding-length PADDING_LENGTH] [--left] [--right]
-                   [--center] [-e ENCODING] [-f FILE] [--unicode] [--js_escape]
+                   [--center] [-e ENCODING] [-f FILE] [--unicode] [--js_escape] [--fire]
 
 Make polyglot payloads as per your Wish
 ```
@@ -62,6 +62,7 @@ Make polyglot payloads as per your Wish
 - `--unicode`: Convert the payload to **Unicode escape sequences** (e.g., `\uXXXX`).
 - `--js_escape`: Convert the payload to **JavaScript escape sequences** (e.g., `\xXX`).
 - `-st`, `--strong`: **Strength of the payload** (default is `1`).
+- `--fire` : **All Encoding Applied**
 
 ### Examples
 
